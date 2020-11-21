@@ -84,11 +84,11 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus</id>
-			<url>http://15.206.209.111:8081/repository/maven-snapshots/</url>
+			<url>http://15.206.209.111:8081/repository/Hackthon-Snapshot/</url>
 		</snapshotRepository>
 		<repository>
              <id>nexus</id>
-             <url>http://15.206.209.111:8081/repository/maven-releases</url>
+             <url>http://15.206.209.111:8081/repository/hackthon-Release/</url>
        	     </repository>
 	</distributionManagement>
 	<build>
