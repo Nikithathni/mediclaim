@@ -11,9 +11,9 @@ pipeline {
 	    sh '/opt/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'
 	         }
 	}
-        stage ('Deploy') {
+        stage ('Execute sonarqube report') {
           steps {
-	    sh '/opt/bin/mvn clean deploy -Dmaven.test.skip=true'
+	    sh '/opt/bin/mvn clean sonar:sonar -Dmaven.test.skip=true'
                  }
 	 }
 	stage("Quality Gate") {
