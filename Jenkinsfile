@@ -22,7 +22,7 @@ pipeline {
           }
 	stage ('Deploy') {
 		steps {
-			sh '/opt//bin/mvn clean deploy -Dmaven.test.skip=true'
+			sh '/opt/bin/mvn clean deploy -Dmaven.test.skip=true'
 		}
 	}
 	stage ('Release') {
