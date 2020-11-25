@@ -3,13 +3,13 @@ pipeline {
 	stages {
       stage('Git Checkout') {
          steps {
-            git 'https://github.com/baikuntha-git/mediclaim.git'
+            git 'https://github.com/Nikithathni/mediclaim.git'
 		}
 	}
 	stage('Build') {
 		steps {
 			withSonarQubeEnv('sonar') {
-				sh '/opt/maven/bin/mvn clean verify sonar:sonar -Dmaven.test.skip=true'
+				sh '/opt/bin/mvn clean verify sonar:sonar -Dmaven.test.skip=true'
 			}
 		}
 	}
@@ -22,7 +22,7 @@ pipeline {
           }
 	stage ('Deploy') {
 		steps {
-			sh '/opt/maven/bin/mvn clean deploy -Dmaven.test.skip=true'
+			sh '/opt//bin/mvn clean deploy -Dmaven.test.skip=true'
 		}
 	}
 	stage ('Release') {
@@ -32,7 +32,7 @@ pipeline {
 	}
 	stage ('DB Migration') {
 		steps {
-			sh '/opt/maven/bin/mvn clean flyway:migrate'
+			sh '/opt/bin/mvn clean flyway:migrate'
 		}
 	}
 }
