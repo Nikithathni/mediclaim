@@ -9,7 +9,7 @@ pipeline {
 	stage('Build') {
 		steps {
 			withSonarQubeEnv('sonar') {
-				sh '/opt/apache-maven-3.6.3/bin/mvn clean package sonar:sonar -Dmaven.test.skip=true'
+				sh '/opt/bin/mvn clean package sonar:sonar -Dmaven.test.skip=true'
 			}
 		}
 	}
