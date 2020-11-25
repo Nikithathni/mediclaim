@@ -13,7 +13,7 @@ pipeline {
 	}
         stage ('Execute sonarqube report') {
           steps {
-	    sh '/opt/sonarqube-7.6/bin/mvn clean sonar:sonar -Dmaven.test.skip=true'
+	    sh '/opt/apache-maven-3.6.3/bin/mvn clean sonar:sonar -Dmaven.test.skip=true'
                  }
 	 }
 	stage("Quality Gate") {
@@ -25,7 +25,7 @@ pipeline {
           }
 	stage ('Deploy') {
 		steps {
-			sh '/opt/nmexus/bin/mvn clean deploy -Dmaven.test.skip=true'
+			sh '/opt/apache-maven-3.6.3/bin/mvn clean deploy -Dmaven.test.skip=true'
 		}
 	}
 	stage ('Release') {
