@@ -13,7 +13,7 @@ pipeline {
 	}
         stage ('Execute sonarqube report') {
           steps {
-	    sh '/opt/apache-maven-3.6.3/bin/mvn clean sonar:sonar -Dmaven.test.skip=true'
+	    sh '/opt/apache-maven-3.6.3/bin/mvn sonar:sonar -Dmaven.test.skip=true'
                  }
 	 }
 	stage("Quality Gate") {
