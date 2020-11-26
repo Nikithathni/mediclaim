@@ -19,7 +19,13 @@ pipeline {
 	stage("Quality Gate") {
             steps {
               timeout(time: 2, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
+		      def qGate = waitForQualityGate()
+		      
+		      if(qGate.status='OK'	)
+		      {
+			      error "Pripe line status is :{$qGate.status}"
+		      }
+                //waitForQualityGate abortPipeline: true
               }
             }
           }
