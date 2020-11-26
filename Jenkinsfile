@@ -38,7 +38,7 @@ pipeline {
          // }
 	stage ('Deploy') {
 		steps {
-			sh '/opt/apache-maven-3.6.3/bin/mvn clean deploy -Dmaven.test.skip=true'
+			sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
 		}
 	}
 	stage ('Release') {
