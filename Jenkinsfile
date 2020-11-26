@@ -19,7 +19,6 @@ pipeline {
 	}
         stage ('Execute sonarqube report') {
           steps {
-	    echo "Build Approval"
 		  sh '/opt/apache-maven-3.6.3/bin/mvn sonar:sonar -Dmaven.test.skip=true'
                  }
 	 }
