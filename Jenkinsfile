@@ -20,7 +20,7 @@ pipeline {
 			      
 		stage('Build') {
          steps {
-	    sh 'mvn clean package -Dmaven.test.skip=true'
+	    sh '/opt/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'
 	         }
 	}
 
@@ -34,7 +34,7 @@ pipeline {
 	//Saving the built jar inside the nexus repostiory 	
 	stage ('Deploy') {
 		steps {
-			sh 'mvn deploy -Dmaven.test.skip=true'
+			sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
 		}
 	}
 
