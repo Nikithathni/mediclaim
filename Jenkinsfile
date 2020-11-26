@@ -14,6 +14,12 @@ pipeline {
 	}
 
 	//Getting Approval From Slack for build trigger
+		stage('Approve build') {
+			steps {
+				slackSend channel:'#builds-',
+					   message: 'Hello, From Slack'
+			}
+		}
 	//Run sonar cube scan on the source code before building 
 
 	//Building the application using maven
