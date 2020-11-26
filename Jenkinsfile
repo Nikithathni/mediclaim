@@ -16,7 +16,7 @@ pipeline {
 	//Getting Approval From Slack for build trigger
 		stage('Approve build') {
 			steps {
-				slackSend channel:'#builds-',
+				slackSend channel:'#jenkinstest',
 					   message: 'Hello, From Slack'
 			}
 		}
