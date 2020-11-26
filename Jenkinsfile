@@ -21,7 +21,7 @@ pipeline {
               timeout(time: 2, unit: 'MINUTES') {
 		      def qGate = waitForQualityGate()
 		      
-		      if(qGate.status='OK'	)
+		      if(qGate.status='OK')
 		      {
 			      error "Pripe line status is :{$qGate.status}"
 		      }
