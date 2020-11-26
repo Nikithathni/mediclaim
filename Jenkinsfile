@@ -6,30 +6,37 @@ pipeline {
             git 'https://github.com/Nikithathni/mediclaim.git'
 		}
 	}
-	stage('Build') {
+		stage('Approve Build')  {
+	 steps {
+		input "Deploy to prod?"
+			}
+		}
+			      
+		stage('Build') {
          steps {
 	    sh '/opt/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'
 	         }
 	}
         stage ('Execute sonarqube report') {
           steps {
-	    sh '/opt/apache-maven-3.6.3/bin/mvn sonar:sonar -Dmaven.test.skip=true'
+	    echo "Build Approval"
+		  sh '/opt/apache-maven-3.6.3/bin/mvn sonar:sonar -Dmaven.test.skip=true'
                  }
 	 }
-	stage("Quality Gate") {
-            steps {
-              timeout(time: 2, unit: 'MINUTES') {
-		     /* def qGate = waitForQualityGate()
+	//stage("Quality Gate") {
+          //  steps {
+            //  timeout(time: 2, unit: 'MINUTES') {
+		//     /* def qGate = waitForQualityGate()
 		      
-		      if(qGate.status != 'OK'){
-			      error "Pripe line status is :{$qGate.status}"
-		      }
-		      */
-                waitForQualityGate abortPipeline: true
+		  //    if(qGate.status != 'OK'){
+			//      error "Pripe line status is :{$qGate.status}"
+		      // } 
+		      // */
+               // waitForQualityGate abortPipeline: true
 		
-              }
-            }
-          }
+            //  }
+           // }
+         // }
 	stage ('Deploy') {
 		steps {
 			sh '/opt/apache-maven-3.6.3/bin/mvn clean deploy -Dmaven.test.skip=true'
