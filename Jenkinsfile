@@ -12,13 +12,19 @@ pipeline {
 
 	  }
 	}
+		//Generate Sonar cube reports 
+        stage ('Execute sonarqube report') {
+          steps {
+		  sh '/opt/apache-maven-3.6.3/bin/mvn sonar:sonar -Dmaven.test.skip=true'
+                 }
+	 }
 
 	//Getting Approval From Slack for build trigger
-		stage('Approve_Build') {
-         steps {
-	    slackSend channel:'#jenkinstest',message:'hello slack'
-	         }
-	}
+		//stage('Approve_Build') {
+        // steps {
+	  //  slackSend channel:'#jenkinstest',message:'hello slack'
+	    //     }
+	//}
 	//Run sonar cube scan on the source code before building 
 
 	//Building the application using maven
@@ -29,12 +35,6 @@ pipeline {
 	         }
 	}
 
-	//Generate Sonar cube reports 
-        stage ('Execute sonarqube report') {
-          steps {
-		  sh '/opt/apache-maven-3.6.3/bin/mvn sonar:sonar -Dmaven.test.skip=true'
-                 }
-	 }
 
 	//Saving the built jar inside the nexus repostiory 	
 	stage ('Deploy') {
