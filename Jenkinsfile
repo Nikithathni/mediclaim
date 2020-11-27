@@ -20,11 +20,11 @@ pipeline {
 	 }
 
 	//Getting Approval From Slack for build trigger
-		//stage('Approve_Build') {
+		stage('Slack_Aproval_job') {
         // steps {
 	  //  slackSend channel:'#jenkinstest',message:'hello slack'
 	    //     }
-	//}
+	}
 	//Run sonar cube scan on the source code before building 
 
 	//Building the application using maven
