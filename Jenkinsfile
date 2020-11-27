@@ -14,19 +14,13 @@ pipeline {
 	}
 
 	//Getting Approval From Slack for build trigger
-		stage('Approve build') {
-			steps {
-				slackSend channel:'#jenkinstest',
-					   message: 'Hello, From Slack'
-			}
-		}
 	//Run sonar cube scan on the source code before building 
 
 	//Building the application using maven
 			      
 		stage('Build') {
          steps {
-	    sh '/opt/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'
+	    sh 'mvn clean package -Dmaven.test.skip=true'
 	         }
 	}
 
@@ -40,9 +34,22 @@ pipeline {
 	//Saving the built jar inside the nexus repostiory 	
 	stage ('Deploy') {
 		steps {
-			sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
+
+			//sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
+			sh 'mvn clean deploy -DskipTests'
+
+			
 		}
 	}
+	// Triggering the ansible 
+	stage ('Deploy') {
+		steps {
+			//sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
+			sh ansible-playbook ansible2.yml
+		}
+	}
+
+
 
   }
 }
