@@ -45,6 +45,7 @@ pipeline {
 	stage ('Deploy_ansible') {
 		steps {
 			//sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
+			sh 'sudo su - ansible'
 			sh 'ansible-playbook ansible2.yml'
 		}
 	}
