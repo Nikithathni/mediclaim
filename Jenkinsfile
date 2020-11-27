@@ -21,7 +21,7 @@ pipeline {
 
 	//Getting Approval From Slack for build trigger
 		stage('Slack_Aproval_job') {
-        // steps {
+        steps {
 	  //  slackSend channel:'#jenkinstest',message:'hello slack'
 	    //     }
 			slackSend baseUrl: 'https://hooks.slack.com/services/', 
@@ -29,6 +29,7 @@ pipeline {
 				color: 'good',
 				message: 'welcom to slack',
 				tokenCredentialId: 'slackaproval'
+	}
 	}
 	//Run sonar cube scan on the source code before building 
 
