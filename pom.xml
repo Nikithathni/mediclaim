@@ -76,19 +76,19 @@
 		</dependency>
 	</dependencies>
 	<scm>
-        <connection>scm:https://github.com/baikunthar/mediclaim.git</connection>
-        <url>https://github.com/baikunthar/mediclaim.git</url>
-        <developerConnection>scm:git:https://github.com/baikunthar/mediclaim.git</developerConnection>
+        <connection>scm:https://github.com/Nikithathni/mediclaim.git</connection>
+        <url>https://github.com/Nikithathni/mediclaim.git</url>
+        <developerConnection>scm:git:https://github.com/Nikithathni/mediclaim.git</developerConnection>
       <tag>HEAD</tag>
       </scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus</id>
-			<url>http://15.206.209.111:8081/repository/Hackthon-Snapshot/</url>
+			<url>http://localhost:8081/repository/Hachathonsnapshot/</url>
 		</snapshotRepository>
 		<repository>
              <id>nexus</id>
-             <url>http://15.206.209.111:8081/repository/hackthon-Release/</url>
+             <url>http://localhost:8081/repository/HackathanRelease/</url>
        	     </repository>
 	</distributionManagement>
 	<build>
@@ -116,12 +116,17 @@
 					</execution>
 				</executions>
 			</plugin>
+<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-deploy-plugin</artifactId>
+ 
+</plugin>
 			<plugin>
 			    <groupId>org.flywaydb</groupId>
         		    <artifactId>flyway-maven-plugin</artifactId>
 			    <version>6.4.4</version>
 			    <configuration>
-                              <url>jdbc:mysql://13.127.88.103:3306</url>
+                              <url>jdbc:mysql://13.232.163.41:3306</url>
                               <user>claimuser1</user>
 		              <password>H@ckath0n</password>
 			      <schemas>
