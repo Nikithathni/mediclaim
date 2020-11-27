@@ -1,4 +1,4 @@
-lipeline {
+pipeline {
    agent any
 
 //Configuring Pipleline Stages 
@@ -34,23 +34,9 @@ lipeline {
 	//Saving the built jar inside the nexus repostiory 	
 	stage ('Deploy') {
 		steps {
-<<<<<<< HEAD
-			//sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
-			sh 'mvn clean deploy -DskipTests'
-=======
 			sh 'mvn deploy -Dmaven.test.skip=true'
->>>>>>> 7d92df830cd064f0f997a1fcf63cef3909e19385
 		}
 	}
-	// Triggering the ansible 
-	stage ('Deploy') {
-		steps {
-			//sh '/opt/apache-maven-3.6.3/bin/mvn deploy -Dmaven.test.skip=true'
-			sh ansible-playbook ansible2.yml
-		}
-	}
-
-
 
   }
 }
